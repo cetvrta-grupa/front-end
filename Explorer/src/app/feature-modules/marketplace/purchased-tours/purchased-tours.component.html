@@ -1,20 +1,18 @@
-<div id="tour">
-    <br>
-    <br>
-    <br>
-    <div id="tour-details">
-        <div class="tours-heading">Your Purchases</div>
-        <div class="tour-card" *ngFor="let t of purchasedTours">
-            <td (click)="openDetails(t)">
+<div class="purchased-tours-heading">Your Purchases</div>
+<div id="tour" class="tours-container">
+    <div class="tour-cards-container">
+        <article class="tour-card" *ngFor="let t of purchasedTours" (click)="openDetails(t)">
             <div class="tour-info">
-                <div>
-                <div class="tourName"><strong>{{t.name}}</strong></div>
+                <h2 class="tour-name">{{ t.name }}</h2>
+                <p class="tour-description">{{ t.description }}</p>
+                <div class="tour-demand-wrapper">
+                    <span class="demand-label">Demandigness Level: </span>
+                    <span class="tour-demand" [style.color]="getDemandColor(t.demandignessLevel)">
+                        {{ t.demandignessLevel }}
+                    </span>
                 </div>
-                <br>
-                <p> {{t.description}}</p>
-                <p> {{t.price}} AC</p>
-                <p> Demandigness: {{t.demandignessLevel}}</p>
+                <p class="tour-price">Total: {{ t.price }} AC</p>
             </div>
-        </div>
+        </article>
     </div>
 </div>
